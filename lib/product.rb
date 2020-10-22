@@ -11,6 +11,6 @@ class Product
   end
 
   def to_s
-
+    "#{@coust} руб. (осталось #{@rest})"
   end
 end
