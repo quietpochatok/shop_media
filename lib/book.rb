@@ -25,4 +25,9 @@ class Book < Product
     @author = params[:author] if params[:author]
     @genre = params[:genre] if params[:genre]
   end
+
+  def self.from_file(path)
+    d, a, m, i, r, = File.readlines(path, chomp: true)
+    self.new(name: d, genre: a, author: m, coust: i,  rest: r)
+  end
 end

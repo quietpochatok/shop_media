@@ -37,3 +37,15 @@ book.update(author: 'Фёдор Достоевский', coust: 1500)
 # Выведем результат на экран
 puts film
 puts book
+puts
+
+film1 = Film.from_file('./data/films/01.txt')
+book1 = Book.from_file('./data/books/01.txt')
+puts film1
+puts book1
+
+begin
+  Product.from_file('./data/films/*.txt')
+rescue NotImplementedError
+  puts 'Метод класса Product.from_file не реализован'
+end

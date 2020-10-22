@@ -1,5 +1,3 @@
-#  «Леон», 1994, . Люк Бессон, 990 руб. (осталось 5)
-# Фильм «Дурак», 2014, реж. Юрий Быков, 390 руб. (осталось 1)
 
 class Film < Product
   attr_accessor :director, :year
@@ -20,5 +18,17 @@ class Film < Product
 
     @director = params[:director] if params[:director]
     @year = params[:year] if params[:year]
+  end
+
+  def self.from_file(path)
+    d, a, m, i, r, = File.readlines(path, chomp: true)
+
+    self.new(
+      name: d,
+      year: a,
+      director: m,
+      coust: i,
+      rest: r
+    )
   end
 end
