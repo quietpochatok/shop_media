@@ -21,4 +21,6 @@ products << Book.new(
   rest: 10
 )
 
+products.each(&method(:puts))
+
 
