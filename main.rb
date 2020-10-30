@@ -28,23 +28,23 @@ require_relative 'lib/product_collection'
 # puts
 # products.each(&method(:puts))
 
-film = Film.new(name: 'Леон', director: 'Люк Бессон', coust: 990)
-film.year = 1994
-film.update(rest: 15)
+# film = Film.new(name: 'Леон', director: 'Люк Бессон', coust: 990)
+# film.year = 1994
+# film.update(rest: 15)
 
-book = Book.new(name: 'Идиот', genre: 'роман', rest: 10)
-book.author = 'Федька Достоевский'
-book.update(author: 'Фёдор Достоевский', coust: 1500)
+# book = Book.new(name: 'Идиот', genre: 'роман', rest: 10)
+# book.author = 'Федька Достоевский'
+# book.update(author: 'Фёдор Достоевский', coust: 1500)
 
-# Выведем результат на экран
-puts film
-puts book
-puts
+# # Выведем результат на экран
+# puts film
+# puts book
+# puts
 
-film1 = Film.from_file('./data/films/01.txt')
-book1 = Book.from_file('./data/books/01.txt')
-puts film1
-puts book1
+# film1 = Film.from_file('./data/films/01.txt')
+# book1 = Book.from_file('./data/books/01.txt')
+# puts film1
+# puts book1
 
 begin
   Product.from_file('./data/films/*.txt')
@@ -61,17 +61,22 @@ puts "Working collection.sort"
 p collection.sort!(filtr_name: :rest, position: :size)
 
 puts
-# collection.to_a.each_with_index(&method(:puts))
-# collection.to_a.each_with_index do |product, index|
-#   puts "#{index + 1} #{product}"
-# end
+tt =
+  collection.to_a.each_with_index do |product, index|
+    puts "#{index + 1}. #{product}"
+  end
+user = 0
+all_coust = 0
+while user >= 0
+puts 'Что хотите купить:'
+user_choice = STDIN.gets.to_i - 1
+p r = collection.to_a[user_choice].rest.to_i - 1
+p collection.to_a[user_choice].update(rest: "#{r}")
+p collection.to_a[user_choice].rest.to_i
+puts "Вы выбрали: #{collection.to_a[user_choice]}"
+all_coust += collection.to_a[user_choice].coust.to_i
+puts "Всего товаров на сумму: #{all_coust} руб."
+puts tt
+user = user_choice
+end
 
-# user_choice = gets.to_i
-
-p r = collection.to_a[0].rest.to_i - 1
-p collection.to_a[0].update(rest: "#{r}")
-p collection.to_a[0].rest.to_i
-
-
-# puts "Return method to_a:"
-# p collection.to_a

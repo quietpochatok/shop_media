@@ -9,7 +9,7 @@ class Disc < Product
   end
 
   def to_s
-    "Фильм #{@name}, #{@year}, #{@coust} руб. (осталось #{@rest})"
+    "#{@name}, #{@year}, #{@coust} руб. (осталось #{@rest})"
   end
 
   def update(params)
@@ -17,7 +17,6 @@ class Disc < Product
 
     @artist = params[:artist] if params[:artist]
     @genre = params[:genre] if params[:genre]
-    @year = params[:year] if params[:year]
     @year = params[:year] if params[:year]
   end
 
