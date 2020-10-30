@@ -22,9 +22,14 @@ class ProductCollection
     files_path = Dir["#{files_product}/*/*.txt"]
 
     object_products =
-
       files_path.map do |path|
-        path.include?('films') ? Film.from_file(path) : Book.from_file(path)
+        if path.include?('films')
+          Film.from_file(path)
+        elsif path.include?('books')
+          Book.from_file(path)
+        else
+          Disc.from_file(path)
+        end
       end
 
     self.new(object_products)

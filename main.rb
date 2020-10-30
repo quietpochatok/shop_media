@@ -1,6 +1,7 @@
 require_relative 'lib/product'
 require_relative 'lib/film'
 require_relative 'lib/book'
+require_relative 'lib/disc'
 require_relative 'lib/product_collection'
 # product = Film.new(990, 1)
 # puts "Фильм Леон стоит #{product.coust} рублей, остаток: #{product.rest}"
