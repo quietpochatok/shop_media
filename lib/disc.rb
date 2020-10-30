@@ -26,9 +26,9 @@ class Disc < Product
 
     self.new(
       name: d,
-      artist: m,
-      genre: a,
-      year: b,
+      artist: a,
+      genre: b,
+      year: m,
       coust: i,
       rest: r
     )

@@ -30,7 +30,7 @@ class ProductCollection
         else
           Disc.from_file(path)
         end
-      end
+    end
 
     self.new(object_products)
   end
@@ -44,7 +44,7 @@ class ProductCollection
     if params[:filtr_name] == :name
       @products.sort_by! { |word| word.name }
     elsif params[:filtr_name] == :rest
-      @products.sort_by!(&params[:filtr_name])
+      @products.sort_by!{ |word| word.rest }
     elsif params[:filtr_name] == :coust
       @products.sort_by! { |word| word.coust }
     end
