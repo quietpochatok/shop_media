@@ -1,17 +1,6 @@
-# Продолжаем развивать наш «Магазин»: реализуйте класс ProductCollection,
-# который может хранить в себе любые товары (фильмы или книги) и у которого есть:
+CLASS = {books: Book, films: Film, disc: Disc}
 
-# Метод класса (статический метод) from_dir, который считывает продукты из папки data, сам понимая,
-# какие товары в какой папке лежат.
-
-# Метод экземпляра to_a, который возвращает массив товаров.
-
-# Метод экземпляра sort, который сортирует товары по цене,
-# остатку на складе или по названию (как по возрастанию, так и по убыванию):
-
-# Создайте в основной программе коллекцию товаров, прочитав её из директории и выведите все товары на экран
 class ProductCollection
-  # attr_accessor :products
 
   def initialize(products = [])
     @products = products
@@ -23,36 +12,24 @@ class ProductCollection
 
     object_products =
       files_path.map do |path|
-        if path.include?('films')
-          Film.from_file(path)
-        elsif path.include?('books')
-          Book.from_file(path)
-        else
-          Disc.from_file(path)
+        CLASS.map do |key, name_class|
+          if path.include?(key.to_s)
+            name_class.from_file(path)
+          end
         end
     end
 
-    self.new(object_products)
+    self.new(object_products.flatten.reject{|element| element == nil})
   end
 
   def to_a
     @products
   end
 
-  def sort!(params)
+  def sort!(**params)
 
-    if params[:filtr_name] == :name
-      @products.sort_by! { |word| word.name }
-    elsif params[:filtr_name] == :rest
-      @products.sort_by!{ |word| word.rest }
-    elsif params[:filtr_name] == :coust
-      @products.sort_by! { |word| word.coust }
-    end
+    @products.sort_by!(&params[:filtr_name])
 
-    if params[:position] == :size
-      @products.reverse!
-    else
-      @products
-    end
+    params[:position] == :size ? @products.reverse! : @products
   end
 end
