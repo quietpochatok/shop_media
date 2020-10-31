@@ -1,13 +1,6 @@
 class Book < Product
-  # Книга «Идиот», роман, автор — Федор Достоевский, 1500 руб. (осталось 10)
-  # Объявим методы-геттеры для переменных экземпляра класса Книга:
-  # @genre — жанр (проза, роман, повесть…)
-  # @author — фамилия и имя автора
   attr_accessor :genre, :author
 
-  # В конструкторе класса Book вызовем конструктор класса-родителя Product,
-  # он заполнит переменные экземпляра @price и @amount, а остальные поля,
-  # специфичные только для книги, заполним мы самостоятельно.
   def initialize(params)
     super
 
@@ -27,7 +20,7 @@ class Book < Product
   end
 
   def self.from_file(path)
-    d, a, m, i, r, = File.readlines(path, chomp: true)
-    self.new(name: d, genre: a, author: m, coust: i,  rest: r)
+    name, genre, author, coust, rest = File.readlines(path, chomp: true)
+    self.new(name: name, genre: genre, author: author, coust: coust,  rest: rest)
   end
 end

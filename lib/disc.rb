@@ -9,7 +9,7 @@ class Disc < Product
   end
 
   def to_s
-    "#{@name}, #{@year}, #{@coust} руб. (осталось #{@rest})"
+    "Альбом #{@artist} - #{@name}, #{@genre}, #{@year}, #{super}"
   end
 
   def update(params)
@@ -21,15 +21,15 @@ class Disc < Product
   end
 
   def self.from_file(path)
-    d, a, b, m, i, r, = File.readlines(path, chomp: true)
+    name, artist, genre, year, coust, rest, = File.readlines(path, chomp: true)
 
     self.new(
-      name: d,
-      artist: a,
-      genre: b,
-      year: m,
-      coust: i,
-      rest: r
+      name: name,
+      artist: artist,
+      genre: genre,
+      year: year,
+      coust: coust,
+      rest: rest
     )
   end
 end

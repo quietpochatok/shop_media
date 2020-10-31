@@ -7,15 +7,12 @@ class ProductCollection
   end
 
   def self.from_dir(files_product)
-
     files_path = Dir["#{files_product}/*/*.txt"]
 
     object_products =
       files_path.map do |path|
         CLASS.map do |key, name_class|
-          if path.include?(key.to_s)
-            name_class.from_file(path)
-          end
+          name_class.from_file(path) if path.include?(key.to_s)
         end
     end
 
@@ -27,9 +24,9 @@ class ProductCollection
   end
 
   def sort!(**params)
+    type_products = CLASS.values.to_s.downcase
 
-    @products.sort_by!(&params[:filtr_name])
-
+    params.include?(%I[#{type_products}]) ? @products.sort_by!(&params[:filtr_name]) : @products
     params[:position] == :size ? @products.reverse! : @products
   end
 end

@@ -1,9 +1,6 @@
 class Product
   attr_accessor :name, :coust, :rest
-  # def initialize(coust, rest)
-  #   @coust = coust
-  #   @rest = rest
-  # end
+
   def initialize(params)
     @name = params[:name]
     @coust = params[:coust]
@@ -19,9 +16,4 @@ class Product
     @coust = params[:coust] if params[:coust]
     @rest = params[:rest] if params[:rest]
   end
-
-  def self.from_file(path)
-    raise NotImplementedError
-  end
-
 end

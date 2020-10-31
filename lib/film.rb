@@ -10,7 +10,7 @@ class Film < Product
   end
 
   def to_s
-    "Фильм #{@name}, #{@year}, реж. #{@director}, #{@coust} руб. (осталось #{@rest})"
+    "Фильм #{@name}, #{@year}, реж. #{@director}, #{super}"
   end
 
   def update(params)
@@ -21,14 +21,14 @@ class Film < Product
   end
 
   def self.from_file(path)
-    d, a, m, i, r, = File.readlines(path, chomp: true)
+    name, year, director, coust, rest, = File.readlines(path, chomp: true)
 
     self.new(
-      name: d,
-      year: a,
-      director: m,
-      coust: i,
-      rest: r
+      name: name,
+      year: year,
+      director: director,
+      coust: coust,
+      rest: rest
     )
   end
 end
