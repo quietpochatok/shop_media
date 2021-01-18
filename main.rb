@@ -9,7 +9,7 @@ product_collections = ProductCollection.from_dir(__dir__ + '/data')
 
 sort_product_collections = product_collections.sort!(filtr_name: :rest, position: :size)
 
-user_card = Cart.new(sort_product_collections)
+user_cart = Cart.new(sort_product_collections)
 
 start_shop = 0
 all_products_coust = 0
@@ -17,16 +17,19 @@ user_choice_products = []
 
 while start_shop == 0
   puts "\nЧто хотите купить:\n\n"
-  puts user_card.showing_catalog
+  puts user_cart.showing_catalog
+  puts '0.Выход'
   user_choice = STDIN.gets.to_i - 1
   break if user_choice == -1
+  user_product = user_cart.buying_goods(user_choice)
 
-  user_product = user_card.buying_goods(user_choice)
+  next puts "Извините, но этот товар закончился :( выберите нечто другое пожалуйста!" if user_product == nil
+
   all_products_coust += user_product.coust.to_i
   user_choice_products << user_product
 
   puts <<~END
-    \nВы выбрали: #{user_product}\n
+    \nВы выбрали: #{user_product.to_s}\n
     Всего товаров на сумму: #{all_products_coust} руб.
   END
 end

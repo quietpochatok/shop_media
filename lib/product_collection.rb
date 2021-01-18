@@ -11,8 +11,8 @@ class ProductCollection
 
     object_products =
       files_path.map do |path|
-        CLASS.map do |key, name_class|
-          name_class.from_file(path) if path.include?(key.to_s)
+        CLASS.map do |type_product, name_class|
+          name_class.from_file(path) if path.include?(type_product.to_s)
         end
     end
 

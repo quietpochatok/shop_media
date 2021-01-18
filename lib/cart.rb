@@ -13,6 +13,9 @@ class Cart
   def buying_goods(user_choice_product)
     product = @catalog[user_choice_product]
     change_rest = product.rest.to_i - 1
+
+    return nil if change_rest == -1
+
     product.update(rest: "#{change_rest}")
     product
   end
