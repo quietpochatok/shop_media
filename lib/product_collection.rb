@@ -16,7 +16,7 @@ class ProductCollection
         end
     end
 
-    self.new(object_products.flatten.reject{|element| element == nil})
+    self.new(object_products.flatten.reject{ |element| element == nil })
   end
 
   def to_a

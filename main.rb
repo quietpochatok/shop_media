@@ -5,7 +5,7 @@ require_relative 'lib/disc'
 require_relative 'lib/product_collection'
 require_relative 'lib/cart'
 
-product_collections = ProductCollection.from_dir(__dir__ + '/data')
+product_collections = ProductCollection.from_dir("#{__dir__}/data")
 
 sort_product_collections = product_collections.sort!(filtr_name: :rest, position: :size)
 

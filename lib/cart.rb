@@ -7,7 +7,7 @@ class Cart
 
   def showing_catalog
     list_goods =
-      @catalog.map.with_index {|product, index| "#{index + 1}. #{product}"}
+      @catalog.map.with_index { |product, index| "#{index + 1}. #{product}" }
   end
 
   def buying_goods(user_choice_product)
