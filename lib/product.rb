@@ -16,4 +16,8 @@ class Product
     @coust = params[:coust] if params[:coust]
     @rest = params[:rest] if params[:rest]
   end
+
+  def without_rest
+
+  end
 end

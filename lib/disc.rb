@@ -32,5 +32,8 @@ class Disc < Product
       rest: rest
     )
   end
+  def without_rest
+    "Альбом #{@artist} - #{@name}, #{@genre}, #{@year}"
+  end
 end
 

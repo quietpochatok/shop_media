@@ -35,5 +35,12 @@ while start_shop == 0
 end
 
 puts "\nВы купили:\n\n"
-puts user_choice_products.each(&:to_s)
+
+total_list_order =
+  user_cart.order_sheet(user_choice_products).map do |class_object, count_goods|
+    "#{class_object.without_rest} - #{class_object.coust} рублей х #{count_goods} шт = #{class_object.coust.to_i * count_goods}"
+end
+
+puts total_list_order
+
 puts "\nС Вас — #{all_products_coust} руб. Спасибо за покупки!"

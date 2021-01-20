@@ -31,4 +31,8 @@ class Film < Product
       rest: rest
     )
   end
+
+  def without_rest
+    "Фильм #{@name}, #{@year}, реж. #{@director}"
+  end
 end

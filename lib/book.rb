@@ -23,4 +23,8 @@ class Book < Product
     name, genre, author, coust, rest = File.readlines(path, chomp: true)
     self.new(name: name, genre: genre, author: author, coust: coust,  rest: rest)
   end
+
+  def without_rest
+    "Книга '#{@name}', #{@genre}, автор — #{@author}"
+  end
 end

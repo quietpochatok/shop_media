@@ -19,4 +19,10 @@ class Cart
     product.update(rest: "#{change_rest}")
     product
   end
+
+  def order_sheet(googs)
+    counts = Hash.new(0)
+    googs.each { |name| counts[name] += 1 }
+    counts
+  end
 end
