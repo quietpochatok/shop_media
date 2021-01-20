@@ -1,6 +1,11 @@
 class Book < Product
   attr_accessor :genre, :author
 
+  def self.from_file(path)
+    name, genre, author, coust, rest = File.readlines(path, chomp: true)
+    self.new(name: name, genre: genre, author: author, coust: coust,  rest: rest)
+  end
+
   def initialize(params)
     super
 
@@ -17,11 +22,6 @@ class Book < Product
 
     @author = params[:author] if params[:author]
     @genre = params[:genre] if params[:genre]
-  end
-
-  def self.from_file(path)
-    name, genre, author, coust, rest = File.readlines(path, chomp: true)
-    self.new(name: name, genre: genre, author: author, coust: coust,  rest: rest)
   end
 
   def without_rest

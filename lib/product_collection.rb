@@ -1,10 +1,5 @@
-CLASS = {books: Book, films: Film, disc: Disc}
-
 class ProductCollection
-
-  def initialize(products = [])
-    @products = products
-  end
+  CLASS = {books: Book, films: Film, disc: Disc}
 
   def self.from_dir(files_product)
     files_path = Dir["#{files_product}/*/*.txt"]
@@ -17,6 +12,10 @@ class ProductCollection
     end
 
     self.new(object_products.flatten.reject{ |element| element == nil })
+  end
+
+  def initialize(products = [])
+    @products = products
   end
 
   def to_a
